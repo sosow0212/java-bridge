@@ -15,9 +15,8 @@ public class BridgeGame {
     public BridgeGame(List<String> bridge) {
         this.bridge = bridge;
         nowIndex = 0;
-        tryCount = 0;
+        tryCount = 1;
         isGameDone = false;
-        isGameWin = false;
     }
 
     /**
@@ -26,18 +25,10 @@ public class BridgeGame {
      * 이동을 위해 필요한 메서드의 반환 타입(return type), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
     public void move() {
-        if (nowIndex == bridge.size()) {
-            // 게임이 끝난 경우
-            doGameWin();
-            return;
-        }
-        // 게임이 끝나지 않은 경우
         nowIndex++;
-    }
-
-    public void doGameWin() {
-        doGameDone();
-        isGameWin = true;
+        if (nowIndex == bridge.size()) {
+            doGameWin();
+        }
     }
 
     public void handleGame(String direction) {
@@ -50,16 +41,23 @@ public class BridgeGame {
     }
 
     public void moveFail() {
-        doGameDone();
-    }
-
-    private void doGameDone() {
         isGameDone = true;
+        isGameWin = false;
     }
 
     public boolean isUserAnswerCorrect(String direction) {
         return direction.equals(bridge.get(nowIndex));
     }
+
+    public boolean isGameWin() {
+        return isGameWin && isGameDone;
+    }
+
+    public void doGameWin() {
+        isGameDone = true;
+        isGameWin = true;
+    }
+
 
     public boolean isGameDone() {
         return isGameDone;
@@ -74,5 +72,14 @@ public class BridgeGame {
         nowIndex = 0;
         tryCount += 1;
         isGameDone = false;
+        isGameWin = false;
+    }
+
+    public int getTryCount() {
+        return tryCount;
+    }
+
+    public List<String> getBridge() {
+        return bridge;
     }
 }
