@@ -31,13 +31,9 @@ public class BridgeGame {
         }
     }
 
-    public void handleGame(String direction) {
-        if (isUserAnswerCorrect(direction)) {
-            move();
-        }
-        if (!isUserAnswerCorrect(direction)) {
-            moveFail();
-        }
+    private void doGameWin() {
+        isGameDone = true;
+        isGameWin = true;
     }
 
     public void moveFail() {
@@ -52,12 +48,6 @@ public class BridgeGame {
     public boolean isGameWin() {
         return isGameWin && isGameDone;
     }
-
-    public void doGameWin() {
-        isGameDone = true;
-        isGameWin = true;
-    }
-
 
     public boolean isGameDone() {
         return isGameDone;
@@ -77,9 +67,5 @@ public class BridgeGame {
 
     public int getTryCount() {
         return tryCount;
-    }
-
-    public List<String> getBridge() {
-        return bridge;
     }
 }
