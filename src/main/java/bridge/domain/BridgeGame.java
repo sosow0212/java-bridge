@@ -30,7 +30,6 @@ public class BridgeGame {
         if (!isUserAnswerCorrect(direction)) {
             moveFail();
         }
-
     }
 
     public void moveSuccess() {
@@ -38,15 +37,19 @@ public class BridgeGame {
     }
 
     public void moveFail() {
-        gameDone();
+        doGameDone();
     }
 
-    private void gameDone() {
+    private void doGameDone() {
         isGameDone = true;
     }
 
     public boolean isUserAnswerCorrect(String direction) {
         return direction.equals(bridge.get(nowIndex));
+    }
+
+    public boolean isGameDone() {
+        return isGameDone;
     }
 
     /**
