@@ -35,6 +35,10 @@
 - BridgeMaker
   - BridgeNumberGenerator를 이용해 다리를 만든다.
 
+- Util
+  - InputParser
+    - InputView에서 입력받은 값의 타입을 바꿔준다.
+
 ## 구현 예상
 
 - 도메인은 주어진 BridgeGame 하나만을 사용한다.
